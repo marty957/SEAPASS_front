@@ -9,31 +9,32 @@ const TopBar = () => {
   return (
     <>
       {["lg"].map((expand) => (
-        <Navbar key={expand} expand={expand} className="bg-body-tertiary mb-3 my_navbar " sticky="top">
+        <Navbar key={expand} expand={expand} className="bg-body-tertiary p-0 my_navbar m-0" sticky="top">
           <Container>
             <Navbar.Brand href="#">
-              <img src="../src/assets/logo_SEAPASS.png" alt="seapass logo" />
+              <img src="../src/assets/logo_SEAPASS.png" alt="seapass logo" width={"100px"} />
             </Navbar.Brand>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
-            <Navbar.Offcanvas id={`offcanvasNavbar-expand-${expand}`} aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`} placement="end">
+            <Navbar.Offcanvas
+              className="canvas"
+              id={`offcanvasNavbar-expand-${expand}`}
+              aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
+              placement="end"
+            >
               <Offcanvas.Header closeButton>
-                <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>Offcanvas</Offcanvas.Title>
+                <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>Seapass</Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
                   <Nav.Link href="#action1">Registrati</Nav.Link>
                   <Nav.Link href="#action2">Login</Nav.Link>
-                  <NavDropdown title="Dropdown" id={`offcanvasNavbarDropdown-expand-${expand}`}>
+                  <NavDropdown title="Link Utili" id={`offcanvasNavbarDropdown-expand-${expand}`}>
                     <NavDropdown.Item href="#action3"></NavDropdown.Item>
                     <NavDropdown.Item href="#action4"></NavDropdown.Item>
                     <NavDropdown.Divider />
                     <NavDropdown.Item href="#action5">Link</NavDropdown.Item>
                   </NavDropdown>
                 </Nav>
-                <Form className="d-flex">
-                  <Form.Control type="search" placeholder="Search" className="me-2" aria-label="Search" />
-                  <Button variant="outline-success">Search</Button>
-                </Form>
               </Offcanvas.Body>
             </Navbar.Offcanvas>
           </Container>

@@ -1,16 +1,39 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Delius&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 body {
-  font-family: "Roboto", sans-serif;
-  font-optical-sizing: auto;
+  font-family: "Delius", cursive;
   font-weight: 400;
   font-style: normal;
-  color: rgb(0, 3, 43);
-  background-image: url("../src/assets/sfondo.jpg");
+  color: #292828;
+  box-sizing: content-box;
+  margin: 0;
+  padding: 0;
+}
+.headings {
+  font-family: "Lora", serif;
+  font-style: normal;
+}
+.my_navbar {
+  box-shadow: 0 3px 10px #b0b0b0;
+}
 
-  .my_navbar {
-    color: rgb(38, 38, 150);
-    box-shadow: 0 1rem 3rem rgb(183, 178, 178);
-    border-radius: 5%;
-  }
+.isole {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  animation: kenburns-right 5s ease-out both;
+}
+.isole img {
+  object-fit: cover;
+  animation: kenburns-right 5s ease-out both;
+}
+
+.canvas {
+  background-color: #22a7e0;
+  color: #ffffff;
+}
+
+.cit {
+  background-color: #22a7e0;
+  color: #e8d9d9;
 }
