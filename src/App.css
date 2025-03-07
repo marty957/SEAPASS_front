@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  color: rgb(0, 3, 43);
+  background-image: url("../src/assets/sfondo.jpg");
+
+  .my_navbar {
+    color: rgb(38, 38, 150);
+    box-shadow: 0 1rem 3rem rgb(183, 178, 178);
+    border-radius: 5%;
+  }
+}
