@@ -1,6 +1,6 @@
 const LinkSection = () => {
   return (
-    <div className="container text-center">
+    <div className="container text-center mb-5">
       <div className="row">
         <h3 className="my-5 ">
           Link Utili: <br />
@@ -8,7 +8,7 @@ const LinkSection = () => {
         </h3>
         <div className="bordi col-sm-12 col-lg-3 text-center mt-4  ">
           <h5 className="my-3">Navi da crociera</h5>
-          <a href="" className="text-decoration-none">
+          <a href="https://career.costacrociere.it/" target="_blank" className="text-decoration-none">
             <div className="d-flex justify-content-center">
               <div className="me-3">
                 <img src="../src/assets/costa.webp" alt="costa crociera logo" width={"38px"} className=" " />
@@ -18,7 +18,7 @@ const LinkSection = () => {
               </div>
             </div>
           </a>
-          <a href="" className="text-decoration-none">
+          <a href="https://rclctrac.com/" target="_blank" className="text-decoration-none">
             <div className="d-flex justify-content-center">
               <div className="me-3">
                 <img src="../src/assets/celebrity.png" alt="celebrity logo" width={"38px"} className=" text-center" />
@@ -28,7 +28,7 @@ const LinkSection = () => {
               </div>
             </div>
           </a>
-          <a href="" className="text-decoration-none">
+          <a href="https://shipjobs.carnival.com/" target="_blank" className="text-decoration-none">
             <div className="d-flex justify-content-center">
               <div className="me-3">
                 <img src="../src/assets/carnival.webp" alt="Carnival Cruise logo" width={"38px"} className=" text-center" />
@@ -38,7 +38,7 @@ const LinkSection = () => {
               </div>
             </div>
           </a>
-          <a href="" className="text-decoration-none">
+          <a href="https://career8.successfactors.com/career?company=NCLPROD" target="_blank" className="text-decoration-none">
             <div className="d-flex justify-content-center">
               <div className="me-3">
                 <img src="../src/assets/norwegian.webp" alt="Norwegian Crusie logo" o width={"38px"} className=" text-center" />
@@ -48,7 +48,7 @@ const LinkSection = () => {
               </div>
             </div>
           </a>
-          <a href="" className="text-decoration-none">
+          <a href="https://www.hollandamerica.com/en/eu/about/our-company/careers/careers-shipboard" target="_blank" className="text-decoration-none">
             <div className="d-flex justify-content-center">
               <div className="me-3">
                 <img src="../src/assets/holland.png" alt="Holland Americalogo" width={"38px"} className=" text-center" />
@@ -58,7 +58,7 @@ const LinkSection = () => {
               </div>
             </div>
           </a>
-          <a href="" className="text-decoration-none">
+          <a href="https://www.careers.msccruises.com/apply-now/job?paramS=__0__0__0__0__1" target="_blank" className="text-decoration-none">
             <div className="d-flex justify-content-center">
               <div className="me-3">
                 <img src="../src/assets/Explora_Journeys.jpg" alt="Explora journeyslogo" width={"38px"} className=" text-center" />
@@ -68,7 +68,7 @@ const LinkSection = () => {
               </div>
             </div>
           </a>
-          <a href="" className="text-decoration-none">
+          <a href="https://careers.royalcaribbeangroup.com/" target="_blank" className="text-decoration-none">
             <div className="d-flex justify-content-center">
               <div className="me-3">
                 <img src="../src/assets/Royal-Caribbean-Logo.jpg" alt="Royal Caribbean Cruise logo" width={"38px"} className=" text-center" />
@@ -78,7 +78,7 @@ const LinkSection = () => {
               </div>
             </div>
           </a>
-          <a href="" className="text-decoration-none">
+          <a href="https://www.careers.msccruises.com/" target="_blank" className="text-decoration-none">
             <div className="d-flex justify-content-center">
               <div className="me-3">
                 <img src="../src/assets/msc-cruise.png" alt="MSC cruise logo" width={"38px"} className=" text-center" />
@@ -91,7 +91,7 @@ const LinkSection = () => {
         </div>
         <div className="bordi col-sm-12 col-lg-3 text-center mt-4  mx-auto">
           <h5 className="my-3"> Navi da carico</h5>
-          <a href="" className="text-decoration-none">
+          <a href="https://careers.pilship.com/" target="_blank" className="text-decoration-none">
             <div className="d-flex justify-content-center">
               <div className="me-3">
                 <img src="../src/assets/pil.png" alt="PIL logo" width={"38px"} className=" " />
@@ -101,7 +101,7 @@ const LinkSection = () => {
               </div>
             </div>
           </a>
-          <a href="" className="text-decoration-none">
+          <a href="https://www.evergreen-marine.com/" target="_blank" className="text-decoration-none">
             <div className="d-flex justify-content-center">
               <div className="me-3">
                 <img src="../src/assets/evergreen.png" alt="EverGreen  logo" width={"38px"} className=" text-center" />
@@ -111,7 +111,7 @@ const LinkSection = () => {
               </div>
             </div>
           </a>
-          <a href="" className="text-decoration-none">
+          <a href="https://www.msc.com/it/careers?jobs=Italy%20Spadoni" target="_blank" className="text-decoration-none">
             <div className="d-flex justify-content-center">
               <div className="me-3">
                 <img src="../src/assets/msc-cargo.png" alt="MSC-cargo logo" width={"38px"} className=" text-center" />
@@ -121,7 +121,7 @@ const LinkSection = () => {
               </div>
             </div>
           </a>
-          <a href="" className="text-decoration-none">
+          <a href="https://www.maersk.com/careers/vacancies" target="_blank" className="text-decoration-none">
             <div className="d-flex justify-content-center">
               <div className="me-3">
                 <img src="../src/assets/apm.jpg" alt="APM - Maersk logo" width={"38px"} className=" text-center" />
@@ -131,7 +131,7 @@ const LinkSection = () => {
               </div>
             </div>
           </a>
-          <a href="" className="text-decoration-none">
+          <a href="https://na.coscoshipping.com/col27440/art/2023/art_27440_331845.html" target="_blank" className="text-decoration-none">
             <div className="d-flex justify-content-center">
               <div className="me-3">
                 <img src="../src/assets/COSCO_logo.svg.png" alt="COSCOa logo" width={"38px"} className=" text-center" />
@@ -141,7 +141,7 @@ const LinkSection = () => {
               </div>
             </div>
           </a>
-          <a href="" className="text-decoration-none">
+          <a href="https://www.cma-cgm.com/local/united-states/job-opportunities" className="text-decoration-none">
             <div className="d-flex justify-content-center">
               <div className="me-3">
                 <img src="../src/assets/CMA.png" alt="CMA-CGM logo" width={"38px"} className=" text-center" />
@@ -151,7 +151,7 @@ const LinkSection = () => {
               </div>
             </div>
           </a>
-          <a href="" className="text-decoration-none">
+          <a href="https://www.x-pressfeeders.com/career" target="_blank" className="text-decoration-none">
             <div className="d-flex justify-content-center">
               <div className="me-3">
                 <img src="../src/assets/x-press.jpg" alt="X-Press-Feeders logo" width={"38px"} className=" text-center" />
@@ -161,7 +161,7 @@ const LinkSection = () => {
               </div>
             </div>
           </a>
-          <a href="" className="text-decoration-none">
+          <a href="https://www.hapag-lloyd.com/en/company/career/vacancies/job-search.html" target="_blank" className="text-decoration-none">
             <div className="d-flex justify-content-center">
               <div className="me-3">
                 <img src="../src/assets/hapag.png" alt="Hapag-Lloyd logo" width={"38px"} className=" text-center" />
@@ -252,10 +252,10 @@ const LinkSection = () => {
               <a href="" className="text-decoration-none">
                 <div className="d-flex justify-content-center">
                   <div className="me-3">
-                    <img src="../src/assets/gnv.jpg" alt="GNV logo" width={"38px"} className=" text-center" />
+                    <img src="../src/assets/STAR.jpeg" alt="Star Center logo" width={"38px"} className=" text-center" />
                   </div>
                   <div>
-                    <p className="ps-2 pt-1">GNV- Grandi Navi Veloci</p>
+                    <p className="ps-2 pt-1">Star Center Italia</p>
                   </div>
                 </div>
               </a>
@@ -264,10 +264,10 @@ const LinkSection = () => {
               <a href="" className="text-decoration-none">
                 <div className="d-flex justify-content-center">
                   <div className="me-3">
-                    <img src="../src/assets/gnv.jpg" alt="GNV logo" width={"38px"} className=" text-center" />
+                    <img src="../src/assets/sts.jpg" alt="GNV logo" width={"38px"} className=" text-center" />
                   </div>
                   <div>
-                    <p className="ps-2 pt-1">GNV- Grandi Navi Veloci</p>
+                    <p className="ps-2 pt-1">STS Marine Group</p>
                   </div>
                 </div>
               </a>
@@ -276,10 +276,10 @@ const LinkSection = () => {
               <a href="" className="text-decoration-none">
                 <div className="d-flex justify-content-center">
                   <div className="me-3">
-                    <img src="../src/assets/gnv.jpg" alt="GNV logo" width={"38px"} className=" text-center" />
+                    <img src="../src/assets/imat.jpeg" alt="IMAT logo" width={"38px"} className=" text-center" />
                   </div>
                   <div>
-                    <p className="ps-2 pt-1">GNV- Grandi Navi Veloci</p>
+                    <p className="ps-2 pt-1">IMAT 2006</p>
                   </div>
                 </div>
               </a>
@@ -288,10 +288,10 @@ const LinkSection = () => {
               <a href="" className="text-decoration-none">
                 <div className="d-flex justify-content-center">
                   <div className="me-3">
-                    <img src="../src/assets/gnv.jpg" alt="GNV logo" width={"38px"} className=" text-center" />
+                    <img src="../src/assets/eurac.jpg" alt="GNV logo" width={"38px"} className=" text-center" />
                   </div>
                   <div>
-                    <p className="ps-2 pt-1">GNV- Grandi Navi Veloci</p>
+                    <p className="ps-2 pt-1">EUMAC </p>
                   </div>
                 </div>
               </a>
