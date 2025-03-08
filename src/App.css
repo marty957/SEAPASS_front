@@ -16,7 +16,9 @@ body {
 .my_navbar {
   box-shadow: 0 3px 10px #b0b0b0;
 }
-
+h1 {
+  font-size: 3rem;
+}
 .isole {
   width: 100%;
   margin: 0;
@@ -36,4 +38,11 @@ body {
 .cit {
   background-color: #22a7e0;
   color: #e8d9d9;
+}
+
+.bordi {
+  border: 3px solid #22a7e0;
+  border-radius: 30px;
+  box-shadow: 0 4px 10px #22a7e0;
+  gap: 20px;
 }
