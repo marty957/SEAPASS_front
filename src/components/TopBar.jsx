@@ -6,7 +6,13 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { Link } from "react-router-dom";
-const TopBar = () => {
+import { useState } from "react";
+import { Modal } from "react-bootstrap";
+import ModalLogin from "./ModalLogin";
+import ModalRegistrazione from "./ModalRegistrazione";
+function TopBar() {
+  const [modalShow, setModalShow] = useState(false);
+  const [modalRegShow, setModalRegsShow] = useState(false);
   return (
     <>
       {["lg"].map((expand) => (
@@ -29,8 +35,12 @@ const TopBar = () => {
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
-                  <Nav.Link href="#action1">Registrati</Nav.Link>
-                  <Nav.Link href="#action2">Login</Nav.Link>
+                  <Nav.Link href="#action1" onClick={() => setModalRegsShow(true)}>
+                    Registrati
+                  </Nav.Link>
+                  <Nav.Link href="#action2" onClick={() => setModalShow(true)}>
+                    Login
+                  </Nav.Link>
                   <NavDropdown title="Link Utili" id={`offcanvasNavbarDropdown-expand-${expand}`}>
                     <NavDropdown.Item href="#action3">Navi da Crociera</NavDropdown.Item>
                     <NavDropdown.Item href="#action4">Navi da Carico</NavDropdown.Item>
@@ -44,8 +54,10 @@ const TopBar = () => {
           </Container>
         </Navbar>
       ))}
+      <ModalLogin show={modalShow} onHide={() => setModalShow(false)} />
+      <ModalRegistrazione show={modalRegShow} onHide={() => setModalRegsShow(false)} />
     </>
   );
-};
+}
 
 export default TopBar;
