@@ -1,4 +1,6 @@
 import { Container } from "react-bootstrap";
+import LinkSection from "./LinkSection";
+import Footer from "./Footer";
 
 const HeroSection = () => {
   return (
@@ -12,6 +14,8 @@ const HeroSection = () => {
           <p className="fs-4">Naviga senza pensieri. Con noi avrai i tuoi certificati sempre sotto controllo</p>
         </Container>
       </Container>
+      <LinkSection />
+      <Footer />
     </>
   );
 };

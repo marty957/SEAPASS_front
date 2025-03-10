@@ -6,8 +6,10 @@ const LinkSection = () => {
           Link Utili: <br />
           <span>Offerte di lavoro e centri di formazione</span>
         </h3>
-        <div className="bordi col-sm-12 col-lg-3 text-center mt-4  ">
-          <h5 className="my-3">Navi da crociera</h5>
+        <div className="bordi col-sm-12 col-lg-3 text-center mt-4">
+          <h5 className="my-3" id="action3">
+            Navi da crociera
+          </h5>
           <a href="https://career.costacrociere.it/" target="_blank" className="text-decoration-none">
             <div className="d-flex justify-content-center">
               <div className="me-3">
@@ -90,7 +92,10 @@ const LinkSection = () => {
           </a>
         </div>
         <div className="bordi col-sm-12 col-lg-3 text-center mt-4  mx-auto">
-          <h5 className="my-3"> Navi da carico</h5>
+          <h5 className="my-3" id="action4">
+            {" "}
+            Navi da carico
+          </h5>
           <a href="https://careers.pilship.com/" target="_blank" className="text-decoration-none">
             <div className="d-flex justify-content-center">
               <div className="me-3">
@@ -173,8 +178,14 @@ const LinkSection = () => {
           </a>
         </div>
         <div className="bordi col-sm-12 col-lg-3 text-center mt-4 ">
-          <h5 className="my-3">Traghetti</h5>
-          <a href="" className="text-decoration-none">
+          <h5 className="my-3" id="action5">
+            Traghetti
+          </h5>
+          <a
+            href="https://www.gnv.it/it/gnv/la-compagnia/lavora-con-noi?utm_source=google&utm_medium=cpc&utm_campaign=2022_PerformanceMax_IT_x_x_&gad_source=1&gclid=Cj0KCQjwm7q-BhDRARIsACD6-fU6f4RbE4vHdV4P2YTWTY7Yx8lDFSMu4ff-Iyy2aHfo7SSlgKqd3RYaAhoIEALw_wcB"
+            className="text-decoration-none"
+            target="_blank"
+          >
             <div className="d-flex justify-content-center">
               <div className="me-3">
                 <img src="../src/assets/gnv.jpg" alt="GNV logo" width={"38px"} className=" text-center" />
@@ -184,7 +195,11 @@ const LinkSection = () => {
               </div>
             </div>
           </a>
-          <a href="" className="text-decoration-none">
+          <a
+            href="https://careers.grimaldi-lines.com/jobs.php?company_name=Coperta%20e%20Macchina&lan=it&language=it&gad_source=1&gclid=Cj0KCQjwm7q-BhDRARIsACD6-fX-rAiGYnjtr6yoJfczvk_DHxhL7VkcyeSq0whRH8NI2VZSdKi8LncaAuVHEALw_wcB"
+            className="text-decoration-none"
+            target="_blank"
+          >
             <div className="d-flex justify-content-center">
               <div className="me-3">
                 <img src="../src/assets/grimaldi.jpg" alt="grimaldi logo" width={"38px"} className=" text-center" />
@@ -194,7 +209,7 @@ const LinkSection = () => {
               </div>
             </div>
           </a>
-          <a href="" className="text-decoration-none">
+          <a href="https://www.tirrenia.it/compagnia/lavora-con-noi/" className="text-decoration-none" target="_blank">
             <div className="d-flex justify-content-center">
               <div className="me-3">
                 <img src="../src/assets/tirrenia.png" alt="Tirrenia logo" width={"38px"} className=" text-center" />
@@ -204,7 +219,7 @@ const LinkSection = () => {
               </div>
             </div>
           </a>
-          <a href="" className="text-decoration-none">
+          <a href="https://www.moby.it/la-compagnia/lavora-con-noi/" className="text-decoration-none" target="_blank">
             <div className="d-flex justify-content-center">
               <div className="me-3">
                 <img src="../src/assets/moby.png" alt="Moby Lines logo" width={"38px"} className=" text-center" />
@@ -214,7 +229,7 @@ const LinkSection = () => {
               </div>
             </div>
           </a>
-          <a href="" className="text-decoration-none">
+          <a href="https://www.bluestarferries.com/en-gb/career-opportunities" className="text-decoration-none" target="_blank">
             <div className="d-flex justify-content-center">
               <div className="me-3">
                 <img src="../src/assets/blu.png" alt="Blue star logo" width={"38px"} className=" text-center" />
@@ -224,7 +239,7 @@ const LinkSection = () => {
               </div>
             </div>
           </a>
-          <a href="" className="text-decoration-none">
+          <a href="https://carontetourist.it/it/lavora-con-noi" className="text-decoration-none" target="_blank">
             <div className="d-flex justify-content-center">
               <div className="me-3">
                 <img src="../src/assets/caronte.png" alt="Caronte & Tourist logo" width={"38px"} className=" text-center" />
@@ -234,7 +249,7 @@ const LinkSection = () => {
               </div>
             </div>
           </a>
-          <a href="" className="text-decoration-none">
+          <a href="https://www.corsica-ferries.it/lavoro.html" className="text-decoration-none" target="https://www.corsica-ferries.it/lavoro.html">
             <div className="d-flex justify-content-center">
               <div className="me-3">
                 <img src="../src/assets/cors.jpg" alt="Corsica Sardinia Linest logo" width={"38px"} className=" text-center" />
@@ -246,10 +261,12 @@ const LinkSection = () => {
           </a>
         </div>
         <div className="bordi col-12 mt-5 mx-auto">
-          <h5 className="my-3">Centri di Formazione in Italia</h5>
+          <h5 className="my-3" id="action6">
+            Centri di Formazione in Italia
+          </h5>
           <div className="row">
             <div className="col">
-              <a href="" className="text-decoration-none">
+              <a href="https://www.starcenteritalia.it/" className="text-decoration-none" target="_blank">
                 <div className="d-flex justify-content-center">
                   <div className="me-3">
                     <img src="../src/assets/STAR.jpeg" alt="Star Center logo" width={"38px"} className=" text-center" />
@@ -261,7 +278,7 @@ const LinkSection = () => {
               </a>
             </div>
             <div className="col">
-              <a href="" className="text-decoration-none">
+              <a href="https://www.stsmarinegroup.com/" className="text-decoration-none" target="_blank">
                 <div className="d-flex justify-content-center">
                   <div className="me-3">
                     <img src="../src/assets/sts.jpg" alt="GNV logo" width={"38px"} className=" text-center" />
@@ -273,7 +290,7 @@ const LinkSection = () => {
               </a>
             </div>
             <div className="col">
-              <a href="" className="text-decoration-none">
+              <a href="https://www.imat2006.it/home/" className="text-decoration-none" target="_blank">
                 <div className="d-flex justify-content-center">
                   <div className="me-3">
                     <img src="../src/assets/imat.jpeg" alt="IMAT logo" width={"38px"} className=" text-center" />
@@ -285,7 +302,7 @@ const LinkSection = () => {
               </a>
             </div>
             <div className="col">
-              <a href="" className="text-decoration-none">
+              <a href="https://eumac.it/" className="text-decoration-none" target="_blank">
                 <div className="d-flex justify-content-center">
                   <div className="me-3">
                     <img src="../src/assets/eurac.jpg" alt="GNV logo" width={"38px"} className=" text-center" />
