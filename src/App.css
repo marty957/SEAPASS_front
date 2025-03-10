@@ -39,6 +39,9 @@ h1 {
   background-color: #22a7e0;
   color: #e8d9d9;
 }
+.link {
+  color: #22a7e0;
+}
 
 .bordi {
   border: 3px solid #22a7e0;

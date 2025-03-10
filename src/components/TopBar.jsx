@@ -23,7 +23,7 @@ function TopBar() {
                 <img src="../src/assets/logo_SEAPASS.png" alt="seapass logo" width={"100px"} />
               </Link>
             </Navbar.Brand>
-            <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
+            <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} className="link" />
             <Navbar.Offcanvas
               className="canvas"
               id={`offcanvasNavbar-expand-${expand}`}
