@@ -2,9 +2,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import TopBar from "./components/TopBar";
 import HeroSection from "./components/HeroSection";
-import LinkSection from "./components/LinkSection";
+
 import Footer from "./components/Footer";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Profile from "./components/Profile";
 
 function App() {
   return (
@@ -18,8 +19,9 @@ function App() {
         <TopBar />
         <Routes>
           <Route path="/" element={<HeroSection />} />
-          <Route path="/link" element={<LinkSection />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </>
   );

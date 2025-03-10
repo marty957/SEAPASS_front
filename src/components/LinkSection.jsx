@@ -43,7 +43,7 @@ const LinkSection = () => {
           <a href="https://career8.successfactors.com/career?company=NCLPROD" target="_blank" className="text-decoration-none">
             <div className="d-flex justify-content-center">
               <div className="me-3">
-                <img src="../src/assets/norwegian.webp" alt="Norwegian Crusie logo" o width={"38px"} className=" text-center" />
+                <img src="../src/assets/norwegian.webp" alt="Norwegian Crusie logo" width={"38px"} className=" text-center" />
               </div>
               <div>
                 <p className="ps-2 pt-1 link">Norwegian Crusie Line</p>

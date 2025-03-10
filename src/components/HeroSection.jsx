@@ -15,7 +15,6 @@ const HeroSection = () => {
         </Container>
       </Container>
       <LinkSection />
-      <Footer />
     </>
   );
 };
