@@ -39,6 +39,11 @@ h1 {
   background-color: #22a7e0;
   color: #e8d9d9;
 }
+.button {
+  background-color: #22a7e0;
+  border: none;
+}
+
 .link {
   color: #22a7e0;
 }

@@ -19,7 +19,7 @@ function App() {
         <TopBar />
         <Routes>
           <Route path="/" element={<HeroSection />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile/:id" element={<Profile />} />
         </Routes>
         <Footer />
       </BrowserRouter>

@@ -1,10 +1,11 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
-import { Alert } from "react-bootstrap";
+import AlertNewUser from "./AlertNewUser";
 import { useState } from "react";
 function ModalRegistrazione(props) {
   const [user, setUser] = useState({ name: "", surname: "", username: "", email: "", password: "" });
+
   const [successMessage, setSuccessMessage] = useState(false);
 
   const signIn = (e) => {
@@ -29,7 +30,9 @@ function ModalRegistrazione(props) {
       })
       .then((resp) => {
         if (resp) {
-          setSuccessMessage("Registrazione effettuata con successo controlla la tua email");
+          setUser({ name: "", surname: "", username: "", email: "", password: "" });
+          props.onHide();
+          setSuccessMessage(true);
         }
       })
       .catch((err) => {
@@ -39,62 +42,67 @@ function ModalRegistrazione(props) {
   };
 
   return (
-    <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">Registrazione</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        {successMessage && <Alert variant="success">{successMessage}</Alert>}
-        <Form>
-          <Form.Group className="mb-3" controlId="firstname">
-            <Form.Label>Firstname</Form.Label>
-            <Form.Control type="text" placeholder="Your firstname" required value={user.name} onChange={(e) => setUser({ ...user, name: e.target.value })} />
-          </Form.Group>
-        </Form>
-        <Form>
-          <Form.Group className="mb-3" controlId="surname">
-            <Form.Label>Surname</Form.Label>
+    <>
+      <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">Registrazione</Modal.Title>
+        </Modal.Header>
+        <Form onSubmit={signIn}>
+          <Modal.Body>
+            <Form.Group className="mb-3" controlId="firstname">
+              <Form.Label>Firstname</Form.Label>
+              <Form.Control type="text" placeholder="Your firstname" required value={user.name} onChange={(e) => setUser({ ...user, name: e.target.value })} />
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="surname">
+              <Form.Label>Surname</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Your surname"
+                required
+                value={user.surname}
+                onChange={(e) => setUser({ ...user, surname: e.target.value })}
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="username">
+              <Form.Label>Username</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Choose your username"
+                required
+                value={user.username}
+                onChange={(e) => setUser({ ...user, username: e.target.value })}
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="email">
+              <Form.Label>Email</Form.Label>
+              <Form.Control
+                type="email"
+                placeholder="name@example.com"
+                required
+                value={user.email}
+                onChange={(e) => setUser({ ...user, email: e.target.value })}
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="password" />
+            <Form.Label>password</Form.Label>
             <Form.Control
-              type="text"
-              placeholder="Your surname"
+              type="password"
+              placeholder="your password"
               required
-              value={user.surname}
-              onChange={(e) => setUser({ ...user, surname: e.target.value })}
+              value={user.password}
+              onChange={(e) => setUser({ ...user, password: e.target.value })}
             />
-          </Form.Group>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button type="submit">Sign-in</Button>
+          </Modal.Footer>
         </Form>
-        <Form>
-          <Form.Group className="mb-3" controlId="username">
-            <Form.Label>Username</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Choose your username"
-              required
-              value={user.username}
-              onChange={(e) => setUser({ ...user, username: e.target.value })}
-            />
-          </Form.Group>
-        </Form>
-        <Form.Group className="mb-3" controlId="email">
-          <Form.Label>Email</Form.Label>
-          <Form.Control type="email" placeholder="name@example.com" required value={user.email} onChange={(e) => setUser({ ...user, email: e.target.value })} />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="password" />
-        <Form.Label>password</Form.Label>
-        <Form.Control
-          type="password"
-          placeholder="your password"
-          required
-          value={user.password}
-          onChange={(e) => setUser({ ...user, password: e.target.value })}
-        />
-      </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={signIn} type="submit">
-          Sign-in
-        </Button>
-      </Modal.Footer>
-    </Modal>
+      </Modal>
+      {<AlertNewUser show={successMessage} onHide={() => setSuccessMessage(false)} />}
+    </>
   );
 }
 

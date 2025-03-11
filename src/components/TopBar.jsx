@@ -13,6 +13,7 @@ import ModalRegistrazione from "./ModalRegistrazione";
 function TopBar() {
   const [modalShow, setModalShow] = useState(false);
   const [modalRegShow, setModalRegsShow] = useState(false);
+  const [showOffcanvas, setShowOffcanvas] = useState(false);
   return (
     <>
       {["lg"].map((expand) => (
@@ -23,22 +24,36 @@ function TopBar() {
                 <img src="../src/assets/logo_SEAPASS.png" alt="seapass logo" width={"100px"} />
               </Link>
             </Navbar.Brand>
-            <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} className="link" />
+            <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} onClick={() => setShowOffcanvas(true)} className="link" />
             <Navbar.Offcanvas
               className="canvas"
               id={`offcanvasNavbar-expand-${expand}`}
               aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
               placement="end"
+              show={showOffcanvas}
+              onHide={() => setShowOffcanvas(false)}
             >
               <Offcanvas.Header closeButton>
                 <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>Seapass</Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
-                  <Nav.Link href="#action1" onClick={() => setModalRegsShow(true)}>
+                  <Nav.Link
+                    href="#action1"
+                    onClick={() => {
+                      setModalRegsShow(true);
+                      setShowOffcanvas(false);
+                    }}
+                  >
                     Registrati
                   </Nav.Link>
-                  <Nav.Link href="#action2" onClick={() => setModalShow(true)}>
+                  <Nav.Link
+                    href="#action2"
+                    onClick={() => {
+                      setModalShow(true);
+                      setShowOffcanvas(false);
+                    }}
+                  >
                     Login
                   </Nav.Link>
                   <NavDropdown title="Link Utili" id={`offcanvasNavbarDropdown-expand-${expand}`}>
