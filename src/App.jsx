@@ -16,7 +16,6 @@ function App() {
           v7_startTransition: true
         }}
       >
-        <TopBar />
         <Routes>
           <Route path="/" element={<HeroSection />} />
           <Route path="/profile/:id" element={<Profile />} />

@@ -1,10 +1,11 @@
 import { Container } from "react-bootstrap";
 import LinkSection from "./LinkSection";
-import Footer from "./Footer";
+import TopBar from "./TopBar";
 
 const HeroSection = () => {
   return (
     <>
+      <TopBar />
       <div className="isole container-fluid">
         <img src="../src/assets/sfondo.jpg" alt="isole caiman" className="overflow-hidden isole" width={"100%"} height={"380vh"} />
       </div>

@@ -29,7 +29,8 @@ function ModalLogin(props) {
       })
       .then((params) => {
         if (params) {
-          console.log("fetch di login effettuata correttamente l'id: " + params.id);
+          console.log("fetch di login effettuata correttamente l'id: ", params.id, "token: ", params.token);
+          localStorage.setItem("token", params.token);
           props.onHide();
           navigate(`/profile/${params.id}`);
         }
