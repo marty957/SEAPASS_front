@@ -40,7 +40,7 @@ function Profile() {
     } else {
       navigate("/");
     }
-  }, []);
+  }, [token, id]);
 
   return (
     <>

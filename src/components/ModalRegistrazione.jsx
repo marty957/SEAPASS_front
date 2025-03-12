@@ -51,7 +51,14 @@ function ModalRegistrazione(props) {
           <Modal.Body>
             <Form.Group className="mb-3" controlId="firstname">
               <Form.Label>Firstname</Form.Label>
-              <Form.Control type="text" placeholder="Your firstname" required value={user.name} onChange={(e) => setUser({ ...user, name: e.target.value })} />
+              <Form.Control
+                autoFocus
+                type="text"
+                placeholder="Your firstname"
+                required
+                value={user.name}
+                onChange={(e) => setUser({ ...user, name: e.target.value })}
+              />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="surname">

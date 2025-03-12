@@ -5,13 +5,26 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Modal } from "react-bootstrap";
 import ModalLogin from "./ModalLogin";
 import ModalRegistrazione from "./ModalRegistrazione";
+import ModalDeleteAccount from "./ModalDeleteAccount";
 function TopBar() {
   const [showOffcanvas, setShowOffcanvas] = useState(false);
+  const [deleteModal, setDeleteModal] = useState(false);
+  const navigate = useNavigate();
+
+  const handleDeleteAccount = () => {
+    setDeleteModal(true);
+  };
+
+  const handleLogOut = (e) => {
+    e.preventDefault();
+    localStorage.removeItem("token");
+    navigate("/");
+  };
   return (
     <>
       {["md"].map((expand) => (
@@ -36,12 +49,13 @@ function TopBar() {
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
-                  <Nav.Link href="/">Home</Nav.Link>
                   <NavDropdown title="Impostazioni" id={`offcanvasNavbarDropdown-expand-${expand}`}>
                     <NavDropdown.Item href="/">Cambiare password</NavDropdown.Item>
-                    <NavDropdown.Item href="#action4">Log-out</NavDropdown.Item>
+                    <NavDropdown.Item href="/" onClick={handleLogOut}>
+                      Log-out
+                    </NavDropdown.Item>
                     <NavDropdown.Divider />
-                    <NavDropdown.Item href="#action5">Elimina account</NavDropdown.Item>
+                    <NavDropdown.Item onClick={handleDeleteAccount}>Elimina account</NavDropdown.Item>
                   </NavDropdown>
                 </Nav>
               </Offcanvas.Body>
@@ -49,6 +63,7 @@ function TopBar() {
           </Container>
         </Navbar>
       ))}
+      <ModalDeleteAccount show={deleteModal} onHide={() => setDeleteModal(false)} />
     </>
   );
 }
