@@ -1,14 +1,49 @@
 import { Container } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import TopBarProfile from "./TopBarProfile";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function Profile() {
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
   const { id } = useParams();
 
+  const fileUploadRef = useRef();
+
   const [details, setDetails] = useState({});
+
+  const [avatar, setAvatar] = useState("../src/assets/profilo.webp");
+
+  const handleImageUpload = (e) => {
+    e.preventDefault();
+    fileUploadRef.current.click();
+  };
+
+  const imageChanged = async () => {
+    try {
+      const uploadImage = fileUploadRef.current.files[0];
+      // const image = URL.createObjectURL(uploadImage);
+      //setAvatar(image);
+      const formData = new FormData();
+      formData.append("avatar", uploadImage);
+
+      const response = await fetch(`http://localhost:8080/api/user/${id}/image`, {
+        method: "PATCH",
+        body: formData,
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+
+      if (response.status === 201) {
+        const data = await response.text();
+        setAvatar(data);
+      }
+    } catch (err) {
+      console.log(err);
+      setAvatar("../src/assets/profilo.webp");
+    }
+  };
 
   const persanlDetails = () => {
     fetch(`http://localhost:8080/api/user/${id}`, {
@@ -26,6 +61,7 @@ function Profile() {
       .then((data) => {
         if (data) {
           setDetails(data);
+          setAvatar(data.avatar || "../src/assets/profilo.webp");
           console.log(details);
         }
       })
@@ -50,12 +86,28 @@ function Profile() {
         <div className="row">
           <div className="col-sm-12 col-md-5 col-xl-3">
             <div className="my-2 position-relative container">
-              <img src="../src/assets/profilo.webp" className=" rounded-circle  img-fluid" />
-              <div className=" position-absolute add link">
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentcolor" className="bi bi-plus-circle" viewBox="0 0 16 16">
-                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
-                  <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
-                </svg>
+              <img src={avatar} alt="Avatar" className=" rounded-circle" style={{ objectFit: "cover", width: "200px", height: "200px" }} />
+
+              <div>
+                <button
+                  type="button"
+                  className=" position-absolute add link text-center"
+                  style={{ border: "none", background: "lightgrey", borderRadius: "50%", width: "33px", height: "33px", padding: "0" }}
+                  onClick={handleImageUpload}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="30"
+                    height="30"
+                    fill="currentcolor"
+                    className="bi bi-plus-circle text-start"
+                    viewBox="0 0 16 16"
+                  >
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+                  </svg>
+                </button>
+                <input type="file" id="fileinput" style={{ display: "none" }} ref={fileUploadRef} onChange={imageChanged} />
               </div>
             </div>
           </div>
