@@ -15,6 +15,7 @@ function Profile() {
   const [details, setDetails] = useState({});
   const [avatar, setAvatar] = useState("../src/assets/profilo.webp");
   const [modalEdit, setModalEdit] = useState(false);
+  const [loading, setLoading] = useState();
 
   const handleImageUpload = (e) => {
     e.preventDefault();
@@ -63,6 +64,7 @@ function Profile() {
       })
       .then((data) => {
         if (data) {
+          setLoading(false);
           setDetails(data);
           setAvatar(data.avatar || "../src/assets/profilo.webp");
           console.log(details);
@@ -80,6 +82,14 @@ function Profile() {
       navigate("/");
     }
   }, [token, id, modalEdit]);
+
+  if (loading) {
+    return (
+      <Spinner animation="border" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </Spinner>
+    );
+  }
 
   return (
     <>

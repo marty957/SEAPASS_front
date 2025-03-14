@@ -38,7 +38,7 @@ function ModalDeleteAccount(props) {
           setAlert(true);
           setTimeout(() => {
             navigate("/");
-          }, 4000);
+          }, 3000);
         }
       })
       .catch((err) => {

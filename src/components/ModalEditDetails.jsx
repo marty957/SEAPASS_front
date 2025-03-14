@@ -3,6 +3,7 @@ import Modal from "react-bootstrap/Modal";
 import { useParams } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import { useEffect, useState } from "react";
+import Alert from "react-bootstrap/Alert";
 
 function ModalEditDetails({ show, onHide, details }) {
   const [name, setName] = useState(details.name);
@@ -11,6 +12,10 @@ function ModalEditDetails({ show, onHide, details }) {
   const [username, setUsername] = useState(details.username);
   const token = localStorage.getItem("token");
   const { id } = useParams();
+
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
+  const [alertType, setAlertType] = useState("");
 
   const handleDetailsChanged = (e) => {
     e.preventDefault();
@@ -34,11 +39,22 @@ function ModalEditDetails({ show, onHide, details }) {
           return resp.text();
         }
       })
-      .then((data) => {
-        console.log(data);
+      .then(() => {
+        setAlertMessage("Modifica avvenuta con successo ✔️✔️✔️✔️");
+        setAlertType("alert-success");
+        setShowAlert(true);
+        setTimeout(() => {
+          setShowAlert(false);
+        }, 3000);
+        onHide();
       })
       .catch((err) => {
         console.log(err);
+        setAlertMessage("Si è verificato un errore nella modifica dati ✖️✖️✖️✖️✖️✖️");
+        setAlertType("alert-error");
+        setTimeout(() => {
+          setShowAlert(false);
+        }, 5000);
       });
   };
   useEffect(() => {
@@ -49,6 +65,11 @@ function ModalEditDetails({ show, onHide, details }) {
 
   return (
     <>
+      {showAlert && (
+        <div className={`alert ${alertType} fade show`} role="alert">
+          {alertMessage}
+        </div>
+      )}
       <Modal show={show} onHide={onHide} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">Modifica Dati</Modal.Title>
