@@ -2,17 +2,19 @@ import { Container } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import TopBarProfile from "./TopBarProfile";
 import { useEffect, useRef, useState } from "react";
+import Uploader from "../assets/uploading.gif.gif";
+
+import CentralSection from "./CentralSection";
+import ModalEditDetails from "./ModalEditDetails";
 
 function Profile() {
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
   const { id } = useParams();
-
   const fileUploadRef = useRef();
-
   const [details, setDetails] = useState({});
-
   const [avatar, setAvatar] = useState("../src/assets/profilo.webp");
+  const [modalEdit, setModalEdit] = useState(false);
 
   const handleImageUpload = (e) => {
     e.preventDefault();
@@ -21,6 +23,7 @@ function Profile() {
 
   const imageChanged = async () => {
     try {
+      setAvatar(Uploader);
       const uploadImage = fileUploadRef.current.files[0];
       // const image = URL.createObjectURL(uploadImage);
       //setAvatar(image);
@@ -76,7 +79,7 @@ function Profile() {
     } else {
       navigate("/");
     }
-  }, [token, id]);
+  }, [token, id, modalEdit]);
 
   return (
     <>
@@ -112,15 +115,8 @@ function Profile() {
             </div>
           </div>
           <div className="col-sm-12 col-md-7 col-xl-8">
-            <div className="my-2 ms-2 bordino ">
-              <h3 className="text-center mt-4">
-                Profilo ~ Dati Personali{" "}
-                <span className="ms-3">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-pen" viewBox="0 0 16 16">
-                    <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001m-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708z" />
-                  </svg>
-                </span>
-              </h3>
+            <div className="my-2 ms-2 bordino  ">
+              <h3 className="text-center mt-4">Profilo ~ Dati Personali</h3>
               <div className=" ms-3">
                 <p className="my-2 ms-2">
                   <span className="fw-semibold">Nome: </span>
@@ -151,16 +147,32 @@ function Profile() {
                   </p>
                 </div>
               </div>
-              <div className=" ms-3">
-                <p className="my-2 ms-2">
-                  <span className="fw-semibold">Password: </span>
-                  **********
-                </p>
+              <div className="text-end me-5 mb-4">
+                <button
+                  type="button"
+                  className="button py-1 "
+                  style={{ color: "#ffffff", borderRadius: "8px", cursor: "pointer" }}
+                  onClick={() => {
+                    setModalEdit(true);
+                  }}
+                >
+                  Modifica
+                </button>
               </div>
             </div>
           </div>
         </div>
       </Container>
+      <CentralSection />
+      {Object.keys(details).length > 0 && (
+        <ModalEditDetails
+          show={modalEdit}
+          details={details}
+          onHide={() => {
+            setModalEdit(false);
+          }}
+        />
+      )}
     </>
   );
 }

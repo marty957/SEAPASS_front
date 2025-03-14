@@ -104,7 +104,9 @@ function ModalRegistrazione(props) {
             />
           </Modal.Body>
           <Modal.Footer>
-            <Button type="submit">Sign-in</Button>
+            <button type="submit" className="button py-1 " style={{ color: "#ffffff", borderRadius: "8px", cursor: "pointer" }}>
+              Sign-in
+            </button>
           </Modal.Footer>
         </Form>
       </Modal>

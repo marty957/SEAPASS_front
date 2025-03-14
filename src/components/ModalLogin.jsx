@@ -71,9 +71,9 @@ function ModalLogin(props) {
           </Form.Group>
         </Modal.Body>
         <Modal.Footer>
-          <Button className="cit" type="submit">
+          <button className="button py-1" style={{ color: "#ffffff", borderRadius: "8px", cursor: "pointer" }} type="submit">
             Log-in
-          </Button>
+          </button>
         </Modal.Footer>
       </Form>
     </Modal>

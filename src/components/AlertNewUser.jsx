@@ -12,9 +12,9 @@ function AlertNewUser(props) {
           <p>Grazie per la tua registrazione. A breve riceverei un email per la conferma. Il team di SEAPASS ti aspetta!</p>
         </Modal.Body>
         <Modal.Footer>
-          <Button className="cit" onClick={props.onHide}>
+          <button type="button" className="button py-1 " style={{ color: "#ffffff", borderRadius: "8px", cursor: "pointer" }} onClick={props.onHide}>
             Close
-          </Button>
+          </button>
         </Modal.Footer>
       </Modal>
     </>

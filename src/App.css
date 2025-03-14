@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Delius&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
 body {
   font-family: "Delius", cursive;
   font-weight: 400;
@@ -58,7 +59,6 @@ h1 {
   font-size: 0.8rem;
   border-top: 1px solid #22a7e0;
 }
-
 .bordino {
   border: 1px solid #22a7e0;
   border-radius: 10px;
