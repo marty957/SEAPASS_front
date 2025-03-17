@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Card, Col, Container, Row, Spinner } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { data, useParams } from "react-router-dom";
 import ModalAddCertificate from "./ModalAddCertificate";
+import ModalDeleteCertificate from "./ModalDeleteCertificate";
 
 function CertficateSection() {
   const token = localStorage.getItem("token");
@@ -11,6 +12,8 @@ function CertficateSection() {
   const [loading, setLoading] = useState();
 
   const [modalShow, setModalShow] = useState();
+
+  const [deleteCerti, setDeleteCerti] = useState(false);
 
   const uploadinfCertificate = async () => {
     setLoading(true);
@@ -34,7 +37,7 @@ function CertficateSection() {
 
   useEffect(() => {
     uploadinfCertificate();
-  }, [modalShow]);
+  }, [modalShow, deleteCerti]);
   if (loading) {
     return (
       <Spinner animation="border" role="status">
@@ -54,8 +57,10 @@ function CertficateSection() {
               <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
             </svg>
           </button>
+
           <ModalAddCertificate show={modalShow} onHide={() => setModalShow(false)} />
         </div>
+
         {certificates.length === 0 ? (
           <div className="container">
             <p style={{ color: "#7f7575" }}>Lista certificati vuota</p>
@@ -76,6 +81,7 @@ function CertficateSection() {
                       <p className="d-inline ms-1 mt-2">{certificate.name}</p>
                     </a>
                     <Card.Text className="mt-2">{certificate.description}</Card.Text>
+
                     <Card.Subtitle className="mb-2 text-muted" style={{ fontSize: "0.8rem" }}>
                       Date of Issue: {certificate.issueDate}
                     </Card.Subtitle>
@@ -84,14 +90,15 @@ function CertficateSection() {
                     </Card.Subtitle>
                     <hr />
                     <div className="d-flex justify-content-between">
-                      <button type="button" className="button py-1 " style={{ color: "#ffffff", borderRadius: "8px", cursor: "pointer" }}>
+                      <button type="button" className="button py-1 " style={{ color: "#ffffff", borderRadius: "8px", cursor: "pointer", fontSize: "0.9rem" }}>
                         Edit
                       </button>
-                      <button type="button" style={{ cursor: "pointer", backgroundColor: "transparent", border: "none" }}>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="red" className="bi bi-trash3" viewBox="0 0 16 16">
+                      <button type="button" style={{ cursor: "pointer", backgroundColor: "transparent", border: "none" }} onClick={() => setDeleteCerti(true)}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="red" className="bi bi-trash3" viewBox="0 0 16 16">
                           <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5" />
                         </svg>
                       </button>
+                      {<ModalDeleteCertificate show={deleteCerti} onHide={() => setDeleteCerti(false)} id={certificate.id} />}
                     </div>
                   </Card.Body>
                 </Card>
@@ -99,6 +106,7 @@ function CertficateSection() {
             ))}
           </Row>
         )}
+        <p className="text-center">Entro un mese dalla scadenza di un tuo certificato ti verra mandata una email</p>
       </Container>
     </>
   );

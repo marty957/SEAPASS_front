@@ -19,9 +19,9 @@ function ModalAddCertificate(props) {
     formData.append("description", certificate.description);
     formData.append("issueDate", certificate.issueDate);
     formData.append("expireDate", certificate.expireDate);
-    // If you have a file to upload, append it here
+
     if (certificate.file) {
-      formData.append("file", certificate.file); // Assuming 'certificate.file' holds the file
+      formData.append("file", certificate.file);
     }
 
     setLoading(true);
