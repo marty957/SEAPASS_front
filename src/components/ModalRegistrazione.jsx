@@ -3,13 +3,16 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import AlertNewUser from "./AlertNewUser";
 import { useState } from "react";
+import Spinner from "react-bootstrap/Spinner";
 function ModalRegistrazione(props) {
   const [user, setUser] = useState({ name: "", surname: "", username: "", email: "", password: "" });
 
   const [successMessage, setSuccessMessage] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const signIn = (e) => {
     e.preventDefault();
+    setLoading(true);
     fetch(`http://localhost:8080/api/user/new`, {
       method: "POST",
       headers: {
@@ -31,6 +34,7 @@ function ModalRegistrazione(props) {
       .then((resp) => {
         if (resp) {
           setUser({ name: "", surname: "", username: "", email: "", password: "" });
+          setLoading(false);
           props.onHide();
           setSuccessMessage(true);
         }
@@ -104,6 +108,7 @@ function ModalRegistrazione(props) {
             />
           </Modal.Body>
           <Modal.Footer>
+            {loading && <Spinner animation="border" variant="info" />}
             <button type="submit" className="button py-1 " style={{ color: "#ffffff", borderRadius: "8px", cursor: "pointer" }}>
               Sign-in
             </button>

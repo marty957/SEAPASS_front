@@ -1,16 +1,16 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
+import Spinner from "react-bootstrap/Spinner";
 
 function ModalAddCertificate(props) {
   const [certificate, setCertificate] = useState({ name: "", description: "", file: null, issueDate: "", expireDate: "", category: "" });
   const { id } = useParams();
   const token = localStorage.getItem("token");
-  console.log(token);
-  console.log(id);
-  const fileUploader = useRef();
+
+  const [loading, setLoading] = useState(false);
 
   const addCetificate = (e) => {
     e.preventDefault();
@@ -23,16 +23,25 @@ function ModalAddCertificate(props) {
     if (certificate.file) {
       formData.append("file", certificate.file); // Assuming 'certificate.file' holds the file
     }
+
+    setLoading(true);
+
     fetch(`http://localhost:8080/api/certificate/${id}/new`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`
       },
       body: formData
-    }).then((resp) => {
-      console.log(resp);
-      return resp.text();
-    });
+    })
+      .then((resp) => {
+        setLoading(false);
+        props.onHide();
+        return resp.text();
+      })
+      .catch((err) => {
+        setLoading(false);
+        console.log(err);
+      });
   };
 
   return (
@@ -98,6 +107,7 @@ function ModalAddCertificate(props) {
           </Form.Group>
         </Modal.Body>
         <Modal.Footer>
+          {loading && <Spinner animation="border" variant="info" />}
           <button type="submit" className="button py-1 " style={{ color: "#ffffff", borderRadius: "8px", cursor: "pointer" }}>
             Add Certificate
           </button>

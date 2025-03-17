@@ -34,7 +34,7 @@ function CertficateSection() {
 
   useEffect(() => {
     uploadinfCertificate();
-  }, []);
+  }, [modalShow]);
   if (loading) {
     return (
       <Spinner animation="border" role="status">

@@ -41,17 +41,17 @@ function ModalEditDetails({ show, onHide, details }) {
       })
       .then(() => {
         setAlertMessage("Modifica avvenuta con successo ✔️✔️✔️✔️");
-        setAlertType("alert-success");
+        setAlertType("linear-gradient(180deg, rgba(34,167,224,1) 31%, rgba(164,203,214,1) 88%)");
         setShowAlert(true);
         setTimeout(() => {
           setShowAlert(false);
+          onHide();
         }, 3000);
-        onHide();
       })
       .catch((err) => {
         console.log(err);
         setAlertMessage("Si è verificato un errore nella modifica dati ✖️✖️✖️✖️✖️✖️");
-        setAlertType("alert-error");
+        setAlertType("linear-gradient(180deg, rgba(224,34,34,1) 31%, rgba(164,203,214,1) 88%)");
         setTimeout(() => {
           setShowAlert(false);
         }, 5000);
@@ -65,15 +65,15 @@ function ModalEditDetails({ show, onHide, details }) {
 
   return (
     <>
-      {showAlert && (
-        <div className={`alert ${alertType} fade show`} role="alert">
-          {alertMessage}
-        </div>
-      )}
       <Modal show={show} onHide={onHide} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">Modifica Dati</Modal.Title>
         </Modal.Header>
+        {showAlert && (
+          <div className={`alert fade show text-center container`} style={{ background: alertType }} role="alert">
+            {alertMessage}
+          </div>
+        )}
         <Form onSubmit={handleDetailsChanged}>
           <Modal.Body>
             <Form.Group className="mb-3" controlId="name">
