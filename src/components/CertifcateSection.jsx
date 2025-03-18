@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { Card, Col, Container, Row, Spinner } from "react-bootstrap";
-import { data, useParams } from "react-router-dom";
+import { Card, Container, Row, Spinner } from "react-bootstrap";
+import { useParams } from "react-router-dom";
 import ModalAddCertificate from "./ModalAddCertificate";
 import ModalDeleteCertificate from "./ModalDeleteCertificate";
+import ModalEditCertificate from "./ModalEditCertificate";
 
 function CertficateSection() {
   const token = localStorage.getItem("token");
@@ -14,6 +15,8 @@ function CertficateSection() {
   const [modalShow, setModalShow] = useState();
 
   const [deleteCerti, setDeleteCerti] = useState(false);
+  const [modalEditCer, setModalEditCert] = useState(false);
+  const [selectedCertificate, setSelectedCertificate] = useState({});
 
   const uploadinfCertificate = async () => {
     setLoading(true);
@@ -68,7 +71,7 @@ function CertficateSection() {
         ) : (
           <Row>
             {certificates.map((certificate) => (
-              <Col key={certificate.id} className="col-6 col-md-3">
+              <div key={certificate.id} className="col-12 col-sm-6 col-md-4 col-lg-3">
                 <Card className="mb-3">
                   <Card.Body>
                     <a href={certificate.pdf} target="_blank" className="text-decoration-none" style={{ color: "#22a7e0" }}>
@@ -90,9 +93,18 @@ function CertficateSection() {
                     </Card.Subtitle>
                     <hr />
                     <div className="d-flex justify-content-between">
-                      <button type="button" className="button py-1 " style={{ color: "#ffffff", borderRadius: "8px", cursor: "pointer", fontSize: "0.9rem" }}>
+                      <button
+                        onClick={() => {
+                          setSelectedCertificate(certificate);
+                          setModalEditCert(true);
+                        }}
+                        type="button"
+                        className="button py-1 "
+                        style={{ color: "#ffffff", borderRadius: "8px", cursor: "pointer", fontSize: "0.9rem" }}
+                      >
                         Edit
                       </button>
+
                       <button type="button" style={{ cursor: "pointer", backgroundColor: "transparent", border: "none" }} onClick={() => setDeleteCerti(true)}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="red" className="bi bi-trash3" viewBox="0 0 16 16">
                           <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5" />
@@ -102,11 +114,12 @@ function CertficateSection() {
                     </div>
                   </Card.Body>
                 </Card>
-              </Col>
+              </div>
             ))}
           </Row>
         )}
         <p className="text-center">Entro un mese dalla scadenza di un tuo certificato ti verra mandata una email</p>
+        {modalEditCer && <ModalEditCertificate show={modalEditCer} onHide={() => setModalEditCert(false)} info={selectedCertificate} />}
       </Container>
     </>
   );

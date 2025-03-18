@@ -14,11 +14,12 @@ function CentralSection() {
         </Tab>
         <Tab eventKey="profile" title={<span style={{ color: "#22a7e0" }}>Imbarchi</span>}></Tab>
         <Tab eventKey="contact" title={<span style={{ color: "#22a7e0" }}>Contatti</span>}>
-          <Container>
-            <Row>
+          <Container className="my-3">
+            <h3 className="text-center my-5">Contatti utili per il rinnovo dei certificati</h3>
+            <Row className="g-5">
               <div className="col-sm-12 col-lg-6">
                 <h5 className="fs-6" style={{ borderBottom: " 1px solid #22a7e0" }}>
-                  Contatti Eumac
+                  Eumac
                 </h5>
                 <div className="d-flex align-items-baseline">
                   <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="#22a7e0" className="bi bi-envelope-open me-2" viewBox="0 0 16 16">
@@ -61,7 +62,7 @@ function CentralSection() {
               </div>
               <div className="col-sm-12 col-lg-6">
                 <h5 className="fs-6" style={{ borderBottom: " 1px solid #22a7e0" }}>
-                  Contatti Imat
+                  Imat
                 </h5>
                 <div className="d-flex align-items-baseline">
                   <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="#22a7e0" className="bi bi-envelope-open me-2" viewBox="0 0 16 16">
@@ -96,7 +97,7 @@ function CentralSection() {
               </div>
               <div className="col-sm-12 col-lg-6">
                 <h5 className="fs-6" style={{ borderBottom: " 1px solid #22a7e0" }}>
-                  Contatti STS marine group
+                  STS marine group
                 </h5>
                 <div className="d-flex align-items-baseline">
                   <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="#22a7e0" className="bi bi-envelope-open me-2" viewBox="0 0 16 16">
@@ -139,7 +140,7 @@ function CentralSection() {
               </div>
               <div className="col-sm-12 col-lg-6">
                 <h5 className="fs-6" style={{ borderBottom: " 1px solid #22a7e0" }}>
-                  Contatti Star Center Italia
+                  Star Center Italia
                 </h5>
                 <div className="d-flex align-items-baseline">
                   <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="#22a7e0" className="bi bi-envelope-open me-2" viewBox="0 0 16 16">
