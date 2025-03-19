@@ -6,6 +6,7 @@ import HeroSection from "./components/HeroSection";
 import Footer from "./components/Footer";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Profile from "./components/Profile";
+import AdminDashboard from "./components/AdminDashboard";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HeroSection />} />
           <Route path="/profile/:id" element={<Profile />} />
+          <Route path="/admin/:id" element={<AdminDashboard />} />
         </Routes>
         <Footer />
       </BrowserRouter>

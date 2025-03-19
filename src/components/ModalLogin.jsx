@@ -38,11 +38,20 @@ function ModalLogin(props) {
       })
       .then((params) => {
         if (params) {
-          console.log("fetch di login effettuata correttamente l'id: ", params.id, "token: ", params.token);
+          console.log("fetch di login effettuata correttamente l'id: ", params.id, "token: ", params.token, "ruolo: ", params.roles);
+
           localStorage.setItem("token", params.token);
-          setShowPassword(false);
-          props.onHide();
-          navigate(`/profile/${params.id}`);
+
+          const isAdmin = params.roles.some((r) => r.role === "ADMIN");
+          if (isAdmin) {
+            navigate(`/admin/${params.id}`);
+            setShowPassword(false);
+            props.onHide();
+          } else {
+            setShowPassword(false);
+            props.onHide();
+            navigate(`/profile/${params.id}`);
+          }
         }
       })
       .catch((err) => {
