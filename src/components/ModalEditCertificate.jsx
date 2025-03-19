@@ -64,7 +64,7 @@ function ModalEditCertificate({ show, onHide, info }) {
       .catch((err) => {
         console.log(err);
         setAlertMessage("Si è verificato un errore nella modifica dati ✖️✖️✖️✖️✖️✖️");
-        setAlertType("linear-gradient(180deg, rgba(224,34,34,1) 31%, rgba(164,203,214,1) 88%)");
+        setAlertType("linear-gradient(180deg, rgb(216, 76, 76) 31%, rgb(234, 223, 215)) 88%)");
         setTimeout(() => {
           setShowAlert(false);
         }, 5000);

@@ -12,7 +12,7 @@ function CentralSection() {
         <Tab eventKey="home" title={<span style={{ color: "#22a7e0" }}>Certificati</span>}>
           <CertficateSection />
         </Tab>
-        <Tab eventKey="profile" title={<span style={{ color: "#22a7e0" }}>Imbarchi</span>}></Tab>
+
         <Tab eventKey="contact" title={<span style={{ color: "#22a7e0" }}>Contatti</span>}>
           <Container className="my-3">
             <h3 className="text-center my-5">Contatti utili per il rinnovo dei certificati</h3>

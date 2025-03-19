@@ -99,7 +99,7 @@ function Profile() {
         <div className="row">
           <div className="col-sm-12 col-md-5 col-xl-3">
             <div className="my-2 position-relative container">
-              <img src={avatar} alt="Avatar" className=" rounded-circle" style={{ objectFit: "cover", width: "200px", height: "200px" }} />
+              <img src={avatar} alt="Avatar" className=" rounded-circle" style={{ objectFit: "contain", width: "200px", height: "200px" }} />
 
               <div>
                 <button
