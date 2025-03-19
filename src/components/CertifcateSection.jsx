@@ -40,7 +40,7 @@ function CertficateSection() {
 
   useEffect(() => {
     uploadinfCertificate();
-  }, [modalShow, deleteCerti]);
+  }, [modalShow, deleteCerti, modalEditCer]);
   if (loading) {
     return (
       <Spinner animation="border" role="status">

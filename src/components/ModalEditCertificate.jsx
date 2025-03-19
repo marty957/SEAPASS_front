@@ -45,12 +45,30 @@ function ModalEditCertificate({ show, onHide, info }) {
         Authorization: `Bearer ${token}`
       },
       body: formData
-    }).then((resp) => {
-      if (resp.ok) {
-        console.log(resp);
-        return resp.json();
-      }
-    });
+    })
+      .then((resp) => {
+        if (resp.ok) {
+          console.log(resp);
+          return resp.json();
+        }
+      })
+      .then(() => {
+        setAlertMessage("Modifica avvenuta con successo ✔️✔️✔️✔️");
+        setAlertType("linear-gradient(180deg, rgba(34,167,224,1) 31%, rgba(164,203,214,1) 88%)");
+        setShowAlert(true);
+        setTimeout(() => {
+          setShowAlert(false);
+          onHide();
+        }, 3000);
+      })
+      .catch((err) => {
+        console.log(err);
+        setAlertMessage("Si è verificato un errore nella modifica dati ✖️✖️✖️✖️✖️✖️");
+        setAlertType("linear-gradient(180deg, rgba(224,34,34,1) 31%, rgba(164,203,214,1) 88%)");
+        setTimeout(() => {
+          setShowAlert(false);
+        }, 5000);
+      });
   };
   return (
     <>
