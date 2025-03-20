@@ -1,9 +1,7 @@
-import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import { useParams } from "react-router-dom";
+
 import Form from "react-bootstrap/Form";
 import { useEffect, useState } from "react";
-import Alert from "react-bootstrap/Alert";
 
 function ModalEditDetails({ show, onHide, details }) {
   const [name, setName] = useState(details.name);
@@ -11,7 +9,6 @@ function ModalEditDetails({ show, onHide, details }) {
   const [email, setEmail] = useState(details.email);
   const [username, setUsername] = useState(details.username);
   const token = localStorage.getItem("token");
-  const { id } = useParams();
 
   const [showAlert, setShowAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
@@ -20,7 +17,7 @@ function ModalEditDetails({ show, onHide, details }) {
   const handleDetailsChanged = (e) => {
     e.preventDefault();
 
-    fetch(`http://localhost:8080/api/user/${id}`, {
+    fetch(`http://localhost:8080/api/user/${details.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

@@ -1,16 +1,15 @@
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
-import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
-function ModalEditCertificate({ show, onHide, info }) {
+function ModalEditCertificate({ show, onHide, info, userId }) {
   const [name, setName] = useState(info.name);
   const [description, setDescription] = useState(info.description);
   const [file, setFile] = useState(info.pdf);
   const [issueDate, setIssueDate] = useState(info.issueDate);
   const [expireDate, setExpireDate] = useState(info.expireDate);
+  const [id, setId] = useState(userId);
   const token = localStorage.getItem("token");
-  const { id } = useParams();
 
   const [showAlert, setShowAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
@@ -69,6 +68,8 @@ function ModalEditCertificate({ show, onHide, info }) {
           setShowAlert(false);
         }, 5000);
       });
+
+    useEffect;
   };
   return (
     <>

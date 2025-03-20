@@ -119,7 +119,7 @@ function CertficateSection() {
           </Row>
         )}
         <p className="text-center">Entro un mese dalla scadenza di un tuo certificato ti verra mandata una email</p>
-        {modalEditCer && <ModalEditCertificate show={modalEditCer} onHide={() => setModalEditCert(false)} info={selectedCertificate} />}
+        {modalEditCer && <ModalEditCertificate show={modalEditCer} onHide={() => setModalEditCert(false)} info={selectedCertificate} userId={id} />}
       </Container>
     </>
   );
