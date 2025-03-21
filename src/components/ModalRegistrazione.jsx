@@ -43,8 +43,8 @@ function ModalRegistrazione(props) {
         }
       })
       .catch((err) => {
-        console.error(err);
         console.log(err);
+        alert("errore nella registrazione");
       });
   };
 

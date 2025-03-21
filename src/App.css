@@ -70,3 +70,6 @@ h1 {
   z-index: 10;
   position: absolute;
 }
+.search:focus {
+  box-shadow: 3px 5px 5px #22a7e0;
+}
