@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import { Card, Container, Row, Spinner } from "react-bootstrap";
+import { Slide, ToastContainer } from "react-toastify";
 import { useParams } from "react-router-dom";
 import ModalAddCertificate from "./ModalAddCertificate";
 import ModalDeleteCertificate from "./ModalDeleteCertificate";
 import ModalEditCertificate from "./ModalEditCertificate";
+import { Bounce, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function CertficateSection() {
   const token = localStorage.getItem("token");
@@ -41,6 +44,44 @@ function CertficateSection() {
   useEffect(() => {
     uploadinfCertificate();
   }, [modalShow, deleteCerti, modalEditCer]);
+
+  useEffect(() => {
+    if (certificates.length > 0) {
+      const today = new Date();
+      certificates.forEach((certificate) => {
+        const expiration = new Date(certificate.expireDate);
+
+        const differenceDays = (today - expiration) / (1000 * 60 * 60 * 24);
+
+        if (today.getFullYear() === expiration.getFullYear() && differenceDays > 0 && differenceDays < 30) {
+          toast.warn(`⚓⚓ Il tuo certificato ${certificate.name} scade tra ${Math.ceil(differenceDays)} giorni!`, {
+            position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: true,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+
+            transition: Bounce
+          });
+        } else if (today.getFullYear() === expiration.getFullYear() && differenceDays <= 0) {
+          toast.error(`🛟🛟🛟${certificate.name} è scaduto da ${Math.abs(Math.floor(differenceDays))} giorni`, {
+            position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: true,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Slide
+          });
+        }
+      });
+    }
+  }, [certificates]);
   if (loading) {
     return (
       <Spinner animation="border" role="status">
@@ -121,6 +162,7 @@ function CertficateSection() {
         <p className="text-center">Entro un mese dalla scadenza di un tuo certificato ti verra mandata una email</p>
         {modalEditCer && <ModalEditCertificate show={modalEditCer} onHide={() => setModalEditCert(false)} info={selectedCertificate} userId={id} />}
       </Container>
+      <ToastContainer />
     </>
   );
 }
