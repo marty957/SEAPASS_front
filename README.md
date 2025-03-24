@@ -14,7 +14,7 @@ Il progetto SEAPASS nasce da un'esigenza concreta: lavorando a bordo delle navi 
 
 🌍 Naviga senza pensieri. SEAPASS è il tuo assistente digitale per un imbarco senza stress! 🚢✨
 
-parte Back-end:https://github.com/marty957/SEAPASS_capstone_back
+parte Back-end: https://github.com/marty957/SEAPASS_capstone_back
 
 
 
