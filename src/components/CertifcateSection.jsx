@@ -20,6 +20,7 @@ function CertficateSection() {
   const [deleteCerti, setDeleteCerti] = useState(false);
   const [modalEditCer, setModalEditCert] = useState(false);
   const [selectedCertificate, setSelectedCertificate] = useState({});
+  const [showToast, setShowToast] = useState(false);
 
   const uploadinfCertificate = async () => {
     setLoading(true);
@@ -31,13 +32,14 @@ function CertficateSection() {
       });
 
       if (response.status === 200) {
-        setLoading(false);
         const data = await response.json();
         setCertificates(data);
         console.log(data);
       }
     } catch (err) {
       console.log("Errore nella fetch", err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -46,7 +48,8 @@ function CertficateSection() {
   }, [modalShow, deleteCerti, modalEditCer]);
 
   useEffect(() => {
-    if (certificates.length > 0) {
+    if (certificates.length > 0 && !showToast) {
+      console.log("ciao");
       const today = new Date();
       certificates.forEach((certificate) => {
         const expiration = new Date(certificate.expireDate);
@@ -63,7 +66,6 @@ function CertficateSection() {
             draggable: true,
             progress: undefined,
             theme: "light",
-
             transition: Bounce
           });
         } else if (today.getFullYear() === expiration.getFullYear() && differenceDays <= 0) {
@@ -81,7 +83,11 @@ function CertficateSection() {
         }
       });
     }
-  }, [certificates]);
+    setTimeout(() => {
+      setShowToast(true);
+    }, 5000);
+  }, [certificates, showToast]);
+
   if (loading) {
     return (
       <Spinner animation="border" role="status">

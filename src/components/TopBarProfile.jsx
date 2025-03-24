@@ -50,7 +50,6 @@ function TopBar() {
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
                   <NavDropdown title="Impostazioni" id={`offcanvasNavbarDropdown-expand-${expand}`}>
-                    <NavDropdown.Item href="/">Cambiare password</NavDropdown.Item>
                     <NavDropdown.Item href="/" onClick={handleLogOut}>
                       Log-out
                     </NavDropdown.Item>
