@@ -9,8 +9,10 @@ import ModalEditDetails from "./ModalEditDetails";
 
 function Profile() {
   const token = localStorage.getItem("token");
+
   const navigate = useNavigate();
   const { id } = useParams();
+
   const fileUploadRef = useRef();
   const [details, setDetails] = useState({});
   const [avatar, setAvatar] = useState("../src/assets/profilo.webp");
@@ -20,6 +22,10 @@ function Profile() {
   const handleImageUpload = (e) => {
     e.preventDefault();
     fileUploadRef.current.click();
+  };
+  const handleModalClose = () => {
+    setModalEdit(false);
+    persanlDetails(); // Ricarica i dettagli dopo la modifica
   };
 
   const imageChanged = async () => {
@@ -57,6 +63,7 @@ function Profile() {
     })
       .then((resp) => {
         if (resp.ok) {
+          console.log(resp);
           return resp.json();
         } else {
           throw new Error(`Errore http Status: ${resp.status}`);
@@ -64,10 +71,10 @@ function Profile() {
       })
       .then((data) => {
         if (data) {
+          console.log(data);
           setLoading(false);
           setDetails(data);
           setAvatar(data.avatar || "../src/assets/profilo.webp");
-          console.log(details);
         }
       })
       .catch((err) => {
@@ -78,10 +85,8 @@ function Profile() {
   useEffect(() => {
     if (token) {
       persanlDetails();
-    } else {
-      navigate("/");
     }
-  }, [token, id, modalEdit]);
+  }, [token, modalEdit, details.username]);
 
   if (loading) {
     return (
@@ -174,15 +179,7 @@ function Profile() {
         </div>
       </Container>
       <CentralSection />
-      {Object.keys(details).length > 0 && (
-        <ModalEditDetails
-          show={modalEdit}
-          details={details}
-          onHide={() => {
-            setModalEdit(false);
-          }}
-        />
-      )}
+      {Object.keys(details).length > 0 && <ModalEditDetails show={modalEdit} details={details} onHide={handleModalClose} />}
     </>
   );
 }

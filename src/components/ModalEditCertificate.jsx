@@ -1,31 +1,36 @@
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { Spinner } from "react-bootstrap";
 
 function ModalEditCertificate({ show, onHide, info, userId }) {
   const [name, setName] = useState(info.name);
   const [description, setDescription] = useState(info.description);
-  const [file, setFile] = useState(info.pdf);
+  const [file, setFile] = useState(null);
+  const [fileUrl, setFileUrl] = useState(info.pdf);
   const [issueDate, setIssueDate] = useState(info.issueDate);
   const [expireDate, setExpireDate] = useState(info.expireDate);
   const [id, setId] = useState(userId);
+  const [loading, setLoading] = useState(false);
   const token = localStorage.getItem("token");
 
   const [showAlert, setShowAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
   const [alertType, setAlertType] = useState("");
 
-  const fileName = file ? file.split("/").pop() : "";
+  const fileName = file ? file.name : fileUrl ? fileUrl.split("/").pop() : "";
 
   const handleFileChange = (e) => {
     const selecetedFile = e.target.files[0];
     if (selecetedFile) {
       setFile(selecetedFile);
+      setFileUrl(null);
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
 
     const formData = new FormData();
     formData.append("name", name);
@@ -52,6 +57,7 @@ function ModalEditCertificate({ show, onHide, info, userId }) {
         }
       })
       .then(() => {
+        setLoading(false);
         setAlertMessage("Modifica avvenuta con successo ✔️✔️✔️✔️");
         setAlertType("linear-gradient(180deg, rgba(34,167,224,1) 31%, rgba(164,203,214,1) 88%)");
         setShowAlert(true);
@@ -68,8 +74,6 @@ function ModalEditCertificate({ show, onHide, info, userId }) {
           setShowAlert(false);
         }, 5000);
       });
-
-    useEffect;
   };
   return (
     <>
@@ -101,10 +105,10 @@ function ModalEditCertificate({ show, onHide, info, userId }) {
             <Form.Group className="mb-3" controlId="File">
               <Form.Label>File</Form.Label>
               <Form.Control type="file" accept="application/pdf" onChange={handleFileChange} />
-              {file && (
+              {fileName && (
                 <p className="mt-2">
                   <strong>File caricato:</strong>{" "}
-                  <a className="text-decoration-none" style={{ color: "#22a7e0" }} href={file} target="_blank">
+                  <a className="text-decoration-none" style={{ color: "#22a7e0" }} href={fileUrl || URL.createObjectURL(file)} target="_blank">
                     {fileName}
                   </a>
                 </p>
@@ -120,6 +124,7 @@ function ModalEditCertificate({ show, onHide, info, userId }) {
             </Form.Group>
           </Modal.Body>
           <Modal.Footer>
+            {loading && <Spinner animation="border" variant="info" />}
             <button type="submit" className="button py-1 " style={{ color: "#ffffff", borderRadius: "8px", cursor: "pointer" }}>
               Salva modifiche
             </button>

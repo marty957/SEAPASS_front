@@ -49,14 +49,14 @@ function CertficateSection() {
 
   useEffect(() => {
     if (certificates.length > 0 && !showToast) {
-      console.log("ciao");
       const today = new Date();
       certificates.forEach((certificate) => {
         const expiration = new Date(certificate.expireDate);
 
-        const differenceDays = (today - expiration) / (1000 * 60 * 60 * 24);
+        const differenceDays = Math.ceil((today.getTime() - expiration.getTime()) / 1000 / 60 / 60 / 24);
+        console.log(differenceDays);
 
-        if (today.getFullYear() === expiration.getFullYear() && differenceDays > 0 && differenceDays < 30) {
+        if (today.getFullYear() === expiration.getFullYear() && differenceDays < 0 && differenceDays > -30) {
           toast.warn(`⚓⚓ Il tuo certificato ${certificate.name} scade tra ${Math.ceil(differenceDays)} giorni!`, {
             position: "bottom-right",
             autoClose: 5000,

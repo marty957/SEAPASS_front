@@ -1,5 +1,4 @@
 import Modal from "react-bootstrap/Modal";
-
 import Form from "react-bootstrap/Form";
 import { useEffect, useState } from "react";
 
@@ -8,6 +7,7 @@ function ModalEditDetails({ show, onHide, details }) {
   const [surname, setSurname] = useState(details.surname);
   const [email, setEmail] = useState(details.email);
   const [username, setUsername] = useState(details.username);
+
   const token = localStorage.getItem("token");
 
   const [showAlert, setShowAlert] = useState(false);
@@ -18,7 +18,7 @@ function ModalEditDetails({ show, onHide, details }) {
     e.preventDefault();
 
     fetch(`http://localhost:8080/api/user/${details.id}`, {
-      method: "PUT",
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`
@@ -32,14 +32,15 @@ function ModalEditDetails({ show, onHide, details }) {
     })
       .then((resp) => {
         if (resp.ok) {
-          console.log(resp);
-          return resp.text();
+          return resp.json();
         }
       })
-      .then(() => {
+      .then((r) => {
+        console.log(r);
         setAlertMessage("Modifica avvenuta con successo ✔️✔️✔️✔️");
         setAlertType("linear-gradient(180deg, rgba(34,167,224,1) 31%, rgba(164,203,214,1) 88%)");
         setShowAlert(true);
+
         setTimeout(() => {
           setShowAlert(false);
           onHide();
@@ -57,6 +58,9 @@ function ModalEditDetails({ show, onHide, details }) {
   useEffect(() => {
     if (details) {
       setName(details.name);
+      setAlertMessage(details.email);
+      setSurname(details.surname);
+      setUsername(details.username);
     }
   }, [details]);
 
