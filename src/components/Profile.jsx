@@ -1,5 +1,5 @@
 import { Container } from "react-bootstrap";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import TopBarProfile from "./TopBarProfile";
 import { useEffect, useRef, useState } from "react";
 import Uploader from "../assets/uploading.gif.gif";
@@ -9,8 +9,8 @@ import ModalEditDetails from "./ModalEditDetails";
 
 function Profile() {
   const token = localStorage.getItem("token");
+  const isAdmin = false;
 
-  const navigate = useNavigate();
   const { id } = useParams();
 
   const fileUploadRef = useRef();
@@ -179,7 +179,7 @@ function Profile() {
         </div>
       </Container>
       <CentralSection />
-      {Object.keys(details).length > 0 && <ModalEditDetails show={modalEdit} details={details} onHide={handleModalClose} />}
+      {Object.keys(details).length > 0 && <ModalEditDetails show={modalEdit} details={details} onHide={handleModalClose} admin={isAdmin} />}
     </>
   );
 }

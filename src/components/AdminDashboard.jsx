@@ -25,6 +25,7 @@ function AdminDashboard() {
   const [showDeleteCer, setShowDeleteCert] = useState(false);
   const [searchQuery, setsearchQuery] = useState("");
   const [showAddAdmin, setShowAddAdmin] = useState(false);
+  const isAdmin = true;
 
   const [showModalEditCert, setShowModalEditCert] = useState(false);
   const [showModalEditAccount, setShowModalEditAccount] = useState(false);
@@ -196,7 +197,9 @@ function AdminDashboard() {
               ))}
             {showDelete && <AdminModalDeleteAccount show={showDelete} onHide={() => setShowDelete(false)} user={singleUser} />}
             {showDeleteCer && <AdminModALDeleteCertificated show={showDeleteCer} onHide={() => setShowDeleteCert(false)} cert={singleCert} />}
-            {showModalEditAccount && <ModalEditDetails show={showModalEditAccount} onHide={() => setShowModalEditAccount(false)} details={singleUser} />}
+            {showModalEditAccount && (
+              <ModalEditDetails show={showModalEditAccount} onHide={() => setShowModalEditAccount(false)} details={singleUser} admin={isAdmin} />
+            )}
             {showModalEditCert && (
               <ModalEditCertificate show={showModalEditCert} onHide={() => setShowModalEditCert(false)} info={singleCert} userId={userId} />
             )}

@@ -2,8 +2,9 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import { useEffect, useState } from "react";
 
-function ModalEditDetails({ show, onHide, details }) {
+function ModalEditDetails({ show, onHide, details, admin }) {
   const [name, setName] = useState(details.name);
+  console.log("Admin status:", admin);
   const [surname, setSurname] = useState(details.surname);
   const [email, setEmail] = useState(details.email);
   const [username, setUsername] = useState(details.username);
@@ -40,7 +41,6 @@ function ModalEditDetails({ show, onHide, details }) {
         setAlertMessage("Modifica avvenuta con successo ✔️✔️✔️✔️");
         setAlertType("linear-gradient(180deg, rgba(34,167,224,1) 31%, rgba(164,203,214,1) 88%)");
         setShowAlert(true);
-
         setTimeout(() => {
           setShowAlert(false);
           onHide();
@@ -115,6 +115,7 @@ function ModalEditDetails({ show, onHide, details }) {
               <Form.Control
                 type="text"
                 placeholder="your name"
+                disabled={!admin}
                 value={username}
                 onChange={(e) => {
                   setUsername(e.target.value);
