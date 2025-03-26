@@ -16,6 +16,24 @@ const HeroSection = () => {
         </Container>
       </Container>
       <LinkSection />
+      <Container fluid className=" px-3 py-5 text-center mx-auto">
+        <div className="d-flex justify-content-around  align-items-center">
+          <div>
+            <h3 className="mb-4">
+              <scan style={{ borderBottom: " 1px solid #22a7e0" }}>Supporta il nostro lavoro!</scan>
+            </h3>
+            <p>
+              La tua donazione a SeaPass è essenziale per sostenere
+              <br /> la nostra missione e migliorare i servizi offerti alla comunità. <br />
+              Grazie!
+            </p>
+          </div>
+          <div className="rounded cit p-2">
+            <img src="../src/assets/qrcode.png" alt="qr code" width={"150px"} className=" rounded" />
+            <p className="mt-2 p-0">Scansiona e dona!</p>
+          </div>
+        </div>
+      </Container>
     </>
   );
 };
