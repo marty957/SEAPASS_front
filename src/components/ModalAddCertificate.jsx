@@ -12,6 +12,9 @@ function ModalAddCertificate(props) {
 
   const [loading, setLoading] = useState(false);
 
+  const today = new Date().toISOString().split("T")[0];
+  console.log(today);
+
   const addCetificate = (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -55,6 +58,7 @@ function ModalAddCertificate(props) {
             <Form.Label>Course's name</Form.Label>
             <Form.Control
               type="text"
+              required
               placeholder="Course's name"
               value={certificate.name}
               onChange={(e) => setCertificate({ ...certificate, name: e.target.value })}
@@ -91,6 +95,7 @@ function ModalAddCertificate(props) {
             <Form.Label>Issue Date</Form.Label>
             <Form.Control
               type="date"
+              required
               placeholder="Course's name"
               value={certificate.issueDate}
               onChange={(e) => setCertificate({ ...certificate, issueDate: e.target.value })}
@@ -100,6 +105,8 @@ function ModalAddCertificate(props) {
             <Form.Label>Expire Date</Form.Label>
             <Form.Control
               type="date"
+              required
+              min={today}
               placeholder="Course's name"
               value={certificate.expireDate}
               onChange={(e) => setCertificate({ ...certificate, expireDate: e.target.value })}

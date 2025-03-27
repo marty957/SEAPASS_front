@@ -21,6 +21,7 @@ function CertficateSection() {
   const [modalEditCer, setModalEditCert] = useState(false);
   const [selectedCertificate, setSelectedCertificate] = useState({});
   const [showToast, setShowToast] = useState(false);
+  const [showBadge, setShowBadge] = useState([]);
 
   const uploadinfCertificate = async () => {
     setLoading(true);
@@ -50,10 +51,10 @@ function CertficateSection() {
   useEffect(() => {
     if (certificates.length > 0 && !showToast) {
       const today = new Date();
+      const expireCertificate = [];
       certificates.forEach((certificate) => {
         const expiration = new Date(certificate.expireDate);
-
-        const differenceDays = Math.ceil((today.getTime() - expiration.getTime()) / 1000 / 60 / 60 / 24);
+        const differenceDays = Math.floor((today.getTime() - expiration.getTime()) / 1000 / 60 / 60 / 24);
         console.log(differenceDays);
 
         if (today.getFullYear() === expiration.getFullYear() && differenceDays < 0 && differenceDays > -30) {
@@ -68,8 +69,10 @@ function CertficateSection() {
             theme: "light",
             transition: Bounce
           });
-        } else if (today.getFullYear() === expiration.getFullYear() && differenceDays <= 0) {
-          toast.error(`🛟🛟🛟${certificate.name} è scaduto da ${Math.abs(Math.floor(differenceDays))} giorni`, {
+        } else if (today.getFullYear() === expiration.getFullYear() && differenceDays > 0) {
+          expireCertificate.push(certificate.id);
+        } else if (today.getFullYear() === expiration.getFullYear() && differenceDays === 0) {
+          toast.error(`🛟🛟🛟${certificate.name} scade oggi`, {
             position: "bottom-right",
             autoClose: 5000,
             hideProgressBar: true,
@@ -82,10 +85,11 @@ function CertficateSection() {
           });
         }
       });
+      setShowBadge(expireCertificate);
     }
     setTimeout(() => {
       setShowToast(true);
-    }, 5000);
+    }, 3000);
   }, [certificates, showToast]);
 
   if (loading) {
@@ -119,7 +123,10 @@ function CertficateSection() {
           <Row>
             {certificates.map((certificate) => (
               <div key={certificate.id} className="col-12 col-sm-6 col-md-4 col-lg-3">
-                <Card className="mb-3">
+                <Card className="mb-3 position-relative">
+                  {showBadge.includes(certificate.id) && (
+                    <span className="badge rounded-pil text-bg-danger position-absolute z-3 top-0 start-100 translate-middle">SCADUTO</span>
+                  )}
                   <Card.Body>
                     <a href={certificate.pdf} target="_blank" className="text-decoration-none" style={{ color: "#22a7e0" }}>
                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#22a7e0" className="bi bi-filetype-pdf" viewBox="0 0 16 16">
