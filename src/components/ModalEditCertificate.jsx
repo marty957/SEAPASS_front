@@ -17,6 +17,7 @@ function ModalEditCertificate({ show, onHide, info, userId }) {
   const [showAlert, setShowAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
   const [alertType, setAlertType] = useState("");
+  const today = new Date().toISOString().split("T")[0];
 
   const fileName = file ? file.name : fileUrl ? fileUrl.split("/").pop() : "";
 
@@ -90,7 +91,7 @@ function ModalEditCertificate({ show, onHide, info, userId }) {
           <Modal.Body>
             <Form.Group className="mb-3" controlId="name">
               <Form.Label>Course's name</Form.Label>
-              <Form.Control type="text" placeholder="Name of the course" value={name} onChange={(e) => setName(e.target.value)} />
+              <Form.Control required type="text" placeholder="Name of the course" value={name} onChange={(e) => setName(e.target.value)} />
             </Form.Group>
             <Form.Group className="mb-3" controlId="description">
               <Form.Label>Description</Form.Label>
@@ -116,11 +117,11 @@ function ModalEditCertificate({ show, onHide, info, userId }) {
             </Form.Group>
             <Form.Group className="mb-3" controlId="Issue date">
               <Form.Label>Issue date</Form.Label>
-              <Form.Control type="date" value={issueDate} onChange={(e) => setIssueDate(e.target.value)} />
+              <Form.Control required type="date" value={issueDate} onChange={(e) => setIssueDate(e.target.value)} />
             </Form.Group>
             <Form.Group className="mb-3" controlId="expire date">
               <Form.Label>Expire date</Form.Label>
-              <Form.Control type="date" value={expireDate} onChange={(e) => setExpireDate(e.target.value)} />
+              <Form.Control type="date" min={today} required value={expireDate} onChange={(e) => setExpireDate(e.target.value)} />
             </Form.Group>
           </Modal.Body>
           <Modal.Footer>

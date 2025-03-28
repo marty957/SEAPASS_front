@@ -13,7 +13,6 @@ function ModalAddCertificate(props) {
   const [loading, setLoading] = useState(false);
 
   const today = new Date().toISOString().split("T")[0];
-  console.log(today);
 
   const addCetificate = (e) => {
     e.preventDefault();
